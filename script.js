@@ -77,11 +77,12 @@ sectionLines.forEach(el => revealObserver.observe(el));
 
 // ---- TYPEWRITER ----
 const phrases = [
-  'Full-stack architectures sans framework',
-  'Marketplaces sécurisées avec verification workflow',
+  'Architectures web performantes et scalables',
+  'Marketplaces sécurisées sur-mesure',
   'SPAs performantes et accessibles',
+  'Backend PHP pensé pour la scalabilité',
   'APIs REST + databases optimisées',
-  'OWASP-compliant security par défaut'
+  'Sécurité et performance dès la conception'
 ];
 let phraseIdx = 0, charIdx = 0, isDeleting = false;
 const typeEl = document.getElementById('typewriterText');
