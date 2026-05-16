@@ -1,6 +1,3 @@
-/* ============================================
-   CSS VARIABLES & RESET
-   ============================================ */
 :root {
   --bg: #060611;
   --bg-2: #0c0c1d;
@@ -224,7 +221,6 @@ button { cursor: none; }
 .nav-link:hover::after { width: 100%; }
 .nav-link.active { color: var(--text); }
 .nav-link.active::after { width: 100%; }
-
 .nav-actions { display: flex; align-items: center; gap: 1rem; }
 
 .nav-cta {
@@ -485,7 +481,7 @@ section {
   color: var(--text-muted);
   max-width: 480px;
   line-height: 1.8;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hero-bio strong { color: var(--text); font-weight: 500; }
@@ -494,7 +490,7 @@ section {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .btn-primary {
@@ -681,7 +677,7 @@ section {
 .about-grid {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 4rem;
+  gap: 2rem;
   align-items: start;
 }
 
@@ -755,7 +751,7 @@ section {
 }
 
 @media (max-width: 768px) {
-  .about-buttons { justify-content: center; }
+  .about-buttons { justify-content: center; padding-top: 1rem;}
 }
 
 /* STAT CARDS */
@@ -1796,10 +1792,10 @@ body.modal-open { overflow: hidden; }
   .about-buttons {
     flex-direction: column;
     align-items: center;
+    padding-top: 1rem;
   }
 
-  .about-buttons .btn-primary,
-  .about-buttons .btn-secondary {
+  .about-buttons .btn-primary,.about-buttons .btn-secondary {
     width: 100%;
     justify-content: center;
   }
