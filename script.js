@@ -158,3 +158,123 @@ document.addEventListener('keydown', e => {
     });
   }
 });
+class ProjectCarousel {
+  constructor() {
+    this.carousels = new Map();
+    this.autoplayIntervals = new Map();
+    this.init();
+  }
+
+  init() {
+    document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+      const id = carousel.dataset.carousel;
+      this.carousels.set(id, {
+        element: carousel,
+        currentSlide: 0,
+        totalSlides: carousel.querySelectorAll('.carousel-slide').length,
+        isAutoPlaying: true,
+      });
+
+      this.setupEventListeners(id);
+      this.startAutoPlay(id);
+    });
+  }
+
+  setupEventListeners(carouselId) {
+    const carousel = this.carousels.get(carouselId);
+    const element = carousel.element;
+
+    // Boutons précédent/suivant
+    element
+      .querySelector('.carousel-prev')
+      ?.addEventListener('click', () => this.prevSlide(carouselId));
+    element
+      .querySelector('.carousel-next')
+      ?.addEventListener('click', () => this.nextSlide(carouselId));
+
+    // Indicateurs
+    element.querySelectorAll('.indicator').forEach((indicator, index) => {
+      indicator.addEventListener('click', () => this.goToSlide(carouselId, index));
+    });
+
+    // Pause autoplay au hover
+    element.addEventListener('mouseenter', () => this.stopAutoPlay(carouselId));
+    element.addEventListener('mouseleave', () => this.startAutoPlay(carouselId));
+
+    // Clavier (flèches)
+    element.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') this.prevSlide(carouselId);
+      if (e.key === 'ArrowRight') this.nextSlide(carouselId);
+    });
+  }
+
+  goToSlide(carouselId, slideIndex) {
+    const carousel = this.carousels.get(carouselId);
+    carousel.currentSlide = slideIndex;
+    this.updateCarousel(carouselId);
+    this.resetAutoPlay(carouselId);
+  }
+
+  nextSlide(carouselId) {
+    const carousel = this.carousels.get(carouselId);
+    carousel.currentSlide =
+      (carousel.currentSlide + 1) % carousel.totalSlides;
+    this.updateCarousel(carouselId);
+    this.resetAutoPlay(carouselId);
+  }
+
+  prevSlide(carouselId) {
+    const carousel = this.carousels.get(carouselId);
+    carousel.currentSlide =
+      (carousel.currentSlide - 1 + carousel.totalSlides) %
+      carousel.totalSlides;
+    this.updateCarousel(carouselId);
+    this.resetAutoPlay(carouselId);
+  }
+
+  updateCarousel(carouselId) {
+    const carousel = this.carousels.get(carouselId);
+    const { element, currentSlide } = carousel;
+
+    // Update track position
+    const track = element.querySelector('.carousel-track');
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // Update slides
+    element.querySelectorAll('.carousel-slide').forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentSlide);
+    });
+
+    // Update indicators
+    element.querySelectorAll('.indicator').forEach((indicator, index) => {
+      indicator.classList.toggle('active', index === currentSlide);
+    });
+  }
+
+  startAutoPlay(carouselId) {
+    const carousel = this.carousels.get(carouselId);
+    if (!carousel.isAutoPlaying) {
+      carousel.isAutoPlaying = true;
+      this.autoplayIntervals.set(
+        carouselId,
+        setInterval(() => this.nextSlide(carouselId), 3000)
+      );
+    }
+  }
+
+  stopAutoPlay(carouselId) {
+    const carousel = this.carousels.get(carouselId);
+    carousel.isAutoPlaying = false;
+    clearInterval(this.autoplayIntervals.get(carouselId));
+  }
+
+  resetAutoPlay(carouselId) {
+    this.stopAutoPlay(carouselId);
+    this.startAutoPlay(carouselId);
+  }
+}
+
+// Initialiser au chargement du DOM
+document.addEventListener('DOMContentLoaded', () => {
+  new ProjectCarousel();
+});
