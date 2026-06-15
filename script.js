@@ -396,10 +396,13 @@ if (contactForm) {
         throw new Error(result.message || 'Erreur lors de l’envoi.');
       }
 
-      formStatus.textContent = 'Message envoyé avec succès. Je vous répondrai rapidement.';
-      formStatus.className = 'form-status success';
-
       contactForm.reset();
+      contactForm.classList.add('is-hidden');
+
+      if (formSuccessCard) {
+        formSuccessCard.classList.add('is-visible');
+      }
+
     } catch (error) {
       formStatus.textContent = 'Une erreur est survenue. Veuillez réessayer ou me contacter directement par whatsapp.';
       formStatus.className = 'form-status error';
@@ -407,5 +410,15 @@ if (contactForm) {
       contactSubmit.disabled = false;
       contactSubmit.textContent = 'Envoyer le message';
     }
+  });
+}
+
+if (sendAnotherMessage && contactForm && formSuccessCard) {
+  sendAnotherMessage.addEventListener('click', () => {
+    formSuccessCard.classList.remove('is-visible');
+    contactForm.classList.remove('is-hidden');
+
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
   });
 }
