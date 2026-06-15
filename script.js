@@ -1,3 +1,27 @@
+import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@latest/dist/lenis.mjs';
+
+// ---- LENIS / SMOOTH SCROLL PREMIUM ----
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const lenis = new Lenis({
+  duration: prefersReducedMotion ? 0 : 1.35,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: !prefersReducedMotion,
+  syncTouch: !prefersReducedMotion,
+  wheelMultiplier: 0.85,
+  touchMultiplier: 1.4,
+  infinite: false,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+
+
 // ---- CUSTOM CURSOR ----
 const dot = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
@@ -27,11 +51,11 @@ document.querySelectorAll('a, button, .tech-card, .project-card, .service-card, 
 
 // ---- SCROLL PROGRESS ----
 const scrollProgress = document.getElementById('scrollProgress');
-window.addEventListener('scroll', () => {
+function updateScrollProgress(scrollY) {
   const h = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = window.scrollY / h;
+  const pct = h > 0 ? scrollY / h : 0;
   scrollProgress.style.transform = `scaleX(${pct})`;
-});
+}
 
 // ---- NAVBAR ----
 const navbar = document.getElementById('navbar');
@@ -40,16 +64,24 @@ setTimeout(() => navbar.classList.add('visible'), 300);
 // Active link on scroll
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
+function updateActiveNav(scrollY) {
   let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 200) current = s.id;
+  sections.forEach(section => {
+    if (scrollY >= section.offsetTop - 220) {
+      current = section.id;
+    }
   });
-  navLinks.forEach(l => {
-    l.classList.remove('active');
-    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
   });
+}
+lenis.on('scroll', ({ scroll }) => {
+  updateScrollProgress(scroll);
+  updateActiveNav(scroll);
 });
 
 // ---- MOBILE MENU ----
@@ -74,6 +106,11 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 sectionLines.forEach(el => revealObserver.observe(el));
+
+// Sécurité : afficher directement les éléments du hero
+document.querySelectorAll('.hero .reveal').forEach(el => {
+  el.classList.add('revealed');
+});
 
 // ---- TYPEWRITER ----
 const phrases = [
@@ -115,9 +152,18 @@ setTimeout(typewrite, 1000);
 // ---- SMOOTH SCROLL ----
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    const target = document.querySelector(href);
+
+    if (!target) return;
+
     e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    lenis.scrollTo(target, {
+      offset: -90,
+      duration: 1.35,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
   });
 });
 
@@ -129,11 +175,13 @@ function openModal(modalId) {
   if (!modal) return;
   modal.classList.add('open');
   document.body.classList.add('modal-open');
+  lenis.stop(); // Stop scroll when modal is open
 }
 
 function closeModal(modal) {
   modal.classList.remove('open');
   document.body.classList.remove('modal-open');
+  lenis.start(); // Start scroll when modal is closed
 }
 
 document.querySelectorAll('.project-details-btn').forEach(btn => {
@@ -168,15 +216,18 @@ class ProjectCarousel {
   init() {
     document.querySelectorAll('[data-carousel]').forEach((carousel) => {
       const id = carousel.dataset.carousel;
+      const totalSlides = carousel.querySelectorAll('.carousel-slide').length;
       this.carousels.set(id, {
         element: carousel,
         currentSlide: 0,
-        totalSlides: carousel.querySelectorAll('.carousel-slide').length,
-        isAutoPlaying: true,
+        totalSlides: totalSlides,
+        isAutoPlaying: false,
       });
 
-      this.setupEventListeners(id);
-      this.startAutoPlay(id);
+      if (totalSlides > 1) {
+        this.setupEventListeners(id);
+        this.startAutoPlay(id);
+      }
     });
   }
 
@@ -206,6 +257,27 @@ class ProjectCarousel {
       if (e.key === 'ArrowLeft') this.prevSlide(carouselId);
       if (e.key === 'ArrowRight') this.nextSlide(carouselId);
     });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    element.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    element.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          this.nextSlide(carouselId);
+        } else {
+          this.prevSlide(carouselId);
+        }
+      }
+    }, { passive: true });
   }
 
   goToSlide(carouselId, slideIndex) {
@@ -253,19 +325,19 @@ class ProjectCarousel {
 
   startAutoPlay(carouselId) {
     const carousel = this.carousels.get(carouselId);
-    if (!carousel.isAutoPlaying) {
-      carousel.isAutoPlaying = true;
-      this.autoplayIntervals.set(
-        carouselId,
-        setInterval(() => this.nextSlide(carouselId), 3000)
-      );
-    }
+    if (!carousel) return;
+    if (this.autoplayIntervals.has(carouselId)) return;
+    carousel.isAutoPlaying = true;
+    const intervalId = setInterval(() => {this.nextSlide(carouselId);}, 3000);
+    this.autoplayIntervals.set(carouselId, intervalId);
   }
 
   stopAutoPlay(carouselId) {
     const carousel = this.carousels.get(carouselId);
+    if (!carousel) return;
+    const intervalId = this.autoplayIntervals.get(carouselId);
+    if (intervalId) {clearInterval(intervalId); this.autoplayIntervals.delete(carouselId); }
     carousel.isAutoPlaying = false;
-    clearInterval(this.autoplayIntervals.get(carouselId));
   }
 
   resetAutoPlay(carouselId) {
@@ -278,3 +350,62 @@ class ProjectCarousel {
 document.addEventListener('DOMContentLoaded', () => {
   new ProjectCarousel();
 });
+
+// ---- CONTACT FORM ----
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+const contactSubmit = document.getElementById('contactSubmit');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    const payload = {
+      name: formData.get('name')?.trim(),
+      email: formData.get('email')?.trim(),
+      subject: formData.get('subject')?.trim(),
+      message: formData.get('message')?.trim(),
+      source: 'Formulaire portfolio Elohim Warren',
+    };
+
+    if (!payload.name || !payload.email || !payload.subject || !payload.message) {
+      formStatus.textContent = 'Veuillez remplir tous les champs.';
+      formStatus.className = 'form-status error';
+      return;
+    }
+
+    contactSubmit.disabled = true;
+    contactSubmit.textContent = 'Envoi en cours...';
+
+    formStatus.textContent = '';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Erreur lors de l’envoi.');
+      }
+
+      formStatus.textContent = 'Message envoyé avec succès. Je vous répondrai rapidement.';
+      formStatus.className = 'form-status success';
+
+      contactForm.reset();
+    } catch (error) {
+      formStatus.textContent = 'Une erreur est survenue. Veuillez réessayer ou me contacter directement par whatsapp.';
+      formStatus.className = 'form-status error';
+    } finally {
+      contactSubmit.disabled = false;
+      contactSubmit.textContent = 'Envoyer le message';
+    }
+  });
+}
