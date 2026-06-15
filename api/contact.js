@@ -204,7 +204,7 @@ export default async function handler(req, res) {
 
     await resend.emails.send({
         from: 'Portfolio Elohim <onboarding@resend.dev>',
-        to: process.env.CONTACT_RECEIVER_EMAIL,
+        to: process.env.TO_EMAIL,
         reply_to: cleanEmail,
         subject: `[Portfolio] Nouveau message de ${cleanName}`,
         html: emailHtml,
