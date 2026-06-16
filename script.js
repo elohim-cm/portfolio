@@ -422,3 +422,7 @@ if (sendAnotherMessage && contactForm && formSuccessCard) {
     formStatus.className = 'form-status';
   });
 }
+
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+injectSpeedInsights();
