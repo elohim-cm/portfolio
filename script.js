@@ -422,11 +422,3 @@ if (sendAnotherMessage && contactForm && formSuccessCard) {
     formStatus.className = 'form-status';
   });
 }
-
-import { injectSpeedInsights } from '@vercel/speed-insights';
-
-document.querySelector('#app').innerHTML = `
-  <h1>Elohim Warren - Développeur Web Full-Stack | Portfolio</h1>
-`;
-
-injectSpeedInsights();
