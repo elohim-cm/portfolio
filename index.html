@@ -21,10 +21,6 @@
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
   <!-- Scroll Progress -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -36,6 +32,9 @@
     <div class="scene-grid"></div>
     <div class="scene-vignette"></div>
   </div>
+
+  <!-- Theme Transition Overlay -->
+  <div class="theme-transition-overlay" id="themeTransitionOverlay" aria-hidden="true"></div>
 
   <!-- Navbar -->
   <header class="navbar" id="navbar">
@@ -49,10 +48,14 @@
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a href="#contact" class="nav-cta">
-        <span class="nav-cta-dot"></span>
-        <span class="nav-cta-label">Disponible</span>
-      </a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer le thème">
+        <span class="theme-toggle-track">
+          <span class="theme-toggle-thumb">
+            <span class="theme-icon theme-icon-moon">☾</span>
+            <span class="theme-icon theme-icon-sun">☀</span>
+          </span>
+        </span>
+      </button>
       <button class="nav-mobile-toggle" id="menuToggle" aria-label="Menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
@@ -192,7 +195,7 @@
           <h2 class="about-name reveal from-right">Elohim Warren</h2>
           <p class="about-desc reveal from-left">
             <strong>Développeur Full-Stack</strong> camerounais, je conçois des plateformes web sur-mesure avec une approche centrée sur les fondamentaux : <strong>architecture propre, performance réelle et sécurité intégrée</strong>. Mon travail repose sur une conviction simple : <strong>comprendre profondément le web permet de construire des systèmes plus fiables, plus rapides et plus durables</strong>.<br>
-            J'ai eu à livrer des projet tels que : des marketplaces sur-mesure (plusieurs pages SEO programmatiques), des SPAs haut de gamme, des plateformes e-commerce, des thèmes WordPress engineered et des moteurs de génération de leads. Mon standard : tokens CSRF, requêtes préparées, hashing bcrypt, HTML sémantique, design accessible. Ouvert aux freelances, partenariats et postes axés architecture backend ou full-stack; je vous prêt à vous accompagner dans votre digitalisation.
+            J'ai eu à livrer des projet tels que : des marketplaces sur-mesure (plusieurs pages SEO programmatiques), des SPAs haut de gamme, des plateformes e-commerce, des thèmes WordPress engineered et des moteurs de génération de leads. Mon standard : tokens CSRF, requêtes préparées, hashing bcrypt, HTML sémantique, design accessible. Ouvert aux freelances, partenariats et postes axés architecture backend ou full-stack; je suis prêt à vous accompagner dans votre digitalisation.
           </p>
           <div class="about-buttons reveal from-scale">
             <a href="assets/CV-NGUEND-ELOHIM-WARREN.pdf" class="btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Voir le CV d’Elohim Warren au format PDF">
@@ -508,9 +511,9 @@
             <div class="tech-category-sep"></div>
           </div>
           <div class="tech-grid">
-            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP 8.1"><span class="tech-card-name">PHP</span></div>
-            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL 8"><span class="tech-card-name">MySQL</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🏛️</div><span class="tech-card-name">Custom MVC</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP 8.1" loading="lazy"><span class="tech-card-name">PHP</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL 8" loading="lazy"><span class="tech-card-name">MySQL</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/lucide:blocks.svg?color=%2300d4ff" alt="Custom MVC" loading="lazy" decoding="async"><span class="tech-card-name">Custom MVC</span></div>
           </div>
         </div>
 
@@ -521,11 +524,11 @@
             <div class="tech-category-sep"></div>
           </div>
           <div class="tech-grid">
-            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><span class="tech-card-name">HTML</span></div>
-            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><span class="tech-card-name">CSS</span></div>
-            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><span class="tech-card-name">Vanilla JS</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">♿</div><span class="tech-card-name">Motion & Interaction</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🎨</div><span class="tech-card-name">Responsive Systems</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy"><span class="tech-card-name">HTML</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy"><span class="tech-card-name">CSS</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy"><span class="tech-card-name">Vanilla JS</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/lucide:mouse-pointer-click.svg?color=%2300d4ff" alt="Motion & Interaction" loading="lazy" decoding="async"><span class="tech-card-name">Motion & Interaction</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/lucide:layout-template.svg?color=%2300d4ff" alt="Responsive Systems" loading="lazy" decoding="async"><span class="tech-card-name">Responsive Systems</span></div>
           </div>
         </div>
 
@@ -536,12 +539,12 @@
             <div class="tech-category-sep"></div>
           </div>
           <div class="tech-grid">
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">💉</div><span class="tech-card-name">SQL Injection</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🛡️</div><span class="tech-card-name">Input Validation</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🔐</div><span class="tech-card-name">Auth bcrypt</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">⏱️</div><span class="tech-card-name">Rate Limiting</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📁</div><span class="tech-card-name">Secure Uploads</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🔑</div><span class="tech-card-name">Access Control</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:database-alert-outline.svg?color=%2300d4ff" alt="SQL Injection" loading="lazy" decoding="async"><span class="tech-card-name">SQL Injection</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:shield-check-outline.svg?color=%2300d4ff" alt="Input Validation" loading="lazy" decoding="async"><span class="tech-card-name">Input Validation</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:lock-outline.svg?color=%2300d4ff" alt="Auth bcrypt" loading="lazy" decoding="async"><span class="tech-card-name">Auth bcrypt</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:timer-sand.svg?color=%2300d4ff" alt="Rate Limiting" loading="lazy" decoding="async"><span class="tech-card-name">Rate Limiting</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:file-lock-outline.svg?color=%2300d4ff" alt="Secure Uploads" loading="lazy" decoding="async"><span class="tech-card-name">Secure Uploads</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:account-key-outline.svg?color=%2300d4ff" alt="Access Control" loading="lazy" decoding="async"><span class="tech-card-name">Access Control</span></div>
           </div>
         </div>
 
@@ -552,12 +555,12 @@
             <div class="tech-category-sep"></div>
           </div>
           <div class="tech-grid">
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📋</div><span class="tech-card-name">JSON-LD</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📐</div><span class="tech-card-name">Structured Data</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🗺️</div><span class="tech-card-name">Sitemaps</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📤</div><span class="tech-card-name">Open Graph</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🖼️</div><span class="tech-card-name">Lazy Loading</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">⚡</div><span class="tech-card-name">Semantic HTML</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:code-json.svg?color=%2300d4ff" alt="JSON-LD" loading="lazy" decoding="async"><span class="tech-card-name">JSON-LD</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:database-cog-outline.svg?color=%2300d4ff" alt="Structured Data" loading="lazy" decoding="async"><span class="tech-card-name">Structured Data</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:sitemap-outline.svg?color=%2300d4ff" alt="Sitemaps" loading="lazy" decoding="async"><span class="tech-card-name">Sitemaps</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:share-variant-outline.svg?color=%2300d4ff" alt="Open Graph" loading="lazy" decoding="async"><span class="tech-card-name">Open Graph</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:image-sync-outline.svg?color=%2300d4ff" alt="Lazy Loading" loading="lazy" decoding="async"><span class="tech-card-name">Lazy Loading</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/mdi:language-html5.svg?color=%2300d4ff" alt="Semantic HTML" loading="lazy" decoding="async"><span class="tech-card-name">Semantic HTML</span></div>
           </div>
         </div>
 
@@ -568,11 +571,11 @@
             <div class="tech-category-sep"></div>
           </div>
           <div class="tech-grid">
-            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"><span class="tech-card-name">Git</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🧪</div><span class="tech-card-name">XAMPP</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">▲</div><span class="tech-card-name">Vercel</span></div>
-            <div class="tech-card"><div class="tech-card-icon" style="display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🌐</div><span class="tech-card-name">Hostinger</span></div>
-            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"><span class="tech-card-name">VS Code</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" loading="lazy"><span class="tech-card-name">Git</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/simple-icons:xampp.svg?color=%23FB7A24" alt="XAMPP" loading="lazy" decoding="async"><span class="tech-card-name">XAMPP</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/simple-icons:vercel.svg?color=%2300d4ff" alt="Vercel" loading="lazy" decoding="async"><span class="tech-card-name">Vercel</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://api.iconify.design/simple-icons:hostinger.svg?color=%236735E8" alt="Hostinger" loading="lazy" decoding="async"><span class="tech-card-name">Hostinger</span></div>
+            <div class="tech-card"><img class="tech-card-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" loading="lazy"><span class="tech-card-name">VS Code</span></div>
           </div>
         </div>
 
@@ -621,48 +624,50 @@
         </div>
 
         <div class="reveal from-right">
-          <form class="contact-form" id="contactForm">
-            <div class="contact-form-row">
-              <div class="form-group">
-                <label class="form-label" for="name">Votre nom</label>
-                <input class="form-input" type="text" name="name" id="name" placeholder="Jean Dupont" required>
+          <div class="contact-form-wrapper">
+            <form class="contact-form" id="contactForm">
+              <div class="contact-form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Votre nom</label>
+                  <input class="form-input" type="text" name="name" id="name" placeholder="Jean Dupont" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-input" type="email" name="email" id="email" placeholder="jean@example.com" required>
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input class="form-input" type="email" name="email" id="email" placeholder="jean@example.com" required>
+                <label class="form-label" for="subject">Sujet</label>
+                <input class="form-input" type="text" name="subject" id="subject" placeholder="Marketplace, SPA, e-commerce...">
               </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="subject">Sujet</label>
-              <input class="form-input" type="text" name="subject" id="subject" placeholder="Marketplace, SPA, e-commerce...">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="message">Message</label>
-              <textarea class="form-input" name="message" id="message" placeholder="Décrivez votre projet, vos contraintes, votre stack..."></textarea>
-            </div>
-            <button type="submit" class="form-submit" id="contactSubmit" >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
-              Envoyer le message
-            </button>
-            <p id="formStatus" class="form-status" aria-live="polite"></p>
-          </form>
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-input" name="message" id="message" placeholder="Décrivez votre projet, vos contraintes, votre stack..."></textarea>
+              </div>
+              <button type="submit" class="form-submit" id="contactSubmit" >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+                Envoyer le message
+              </button>
+              <p id="formStatus" class="form-status" aria-live="polite"></p>
+            </form>
 
-          <div class="form-success-card" id="formSuccessCard" aria-live="polite">
-            <div class="success-icon">
-              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                <path class="success-check" d="M20 6 9 17l-5-5"/>
-              </svg>
+            <div class="form-success-card" id="formSuccessCard" aria-live="polite">
+              <div class="success-icon">
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="success-check" d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+
+              <h3>Message envoyé</h3>
+              <p>
+                Merci pour votre message. Je l’ai bien reçu depuis mon portfolio
+                et je vous répondrai rapidement.
+              </p>
+
+              <button type="button" class="btn-secondary success-reset-btn" id="sendAnotherMessage">
+                Envoyer un autre message
+              </button>
             </div>
-
-            <h3>Message envoyé</h3>
-            <p>
-              Merci pour votre message. Je l’ai bien reçu depuis mon portfolio
-              et je vous répondrai rapidement.
-            </p>
-
-            <button type="button" class="btn-secondary success-reset-btn" id="sendAnotherMessage">
-              Envoyer un autre message
-            </button>
           </div>
         </div>
       </div>

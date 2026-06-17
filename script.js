@@ -7,7 +7,7 @@ const lenis = new Lenis({
   duration: prefersReducedMotion ? 0 : 1.35,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smoothWheel: !prefersReducedMotion,
-  syncTouch: !prefersReducedMotion,
+  syncTouch: false,
   wheelMultiplier: 0.85,
   touchMultiplier: 1.4,
   infinite: false,
@@ -20,34 +20,6 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-
-
-// ---- CUSTOM CURSOR ----
-const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
-
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top = mouseY + 'px';
-});
-
-function animateCursor() {
-  ringX += (mouseX - ringX) * 0.15;
-  ringY += (mouseY - ringY) * 0.15;
-  ring.style.left = ringX + 'px';
-  ring.style.top = ringY + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-
-document.querySelectorAll('a, button, .tech-card, .project-card, .service-card, .stat-card').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-});
 
 // ---- SCROLL PROGRESS ----
 const scrollProgress = document.getElementById('scrollProgress');
@@ -91,6 +63,36 @@ menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => mobileMenu.classList.remove('open'));
 });
+
+// ---- THEME TOGGLE ----
+const themeToggle = document.getElementById('themeToggle');
+const themeTransitionOverlay = document.getElementById('themeTransitionOverlay');
+
+const savedTheme = localStorage.getItem('portfolio-theme');
+
+if (savedTheme === 'light') {
+  document.body.classList.add('light-theme');
+  themeToggle?.setAttribute('aria-pressed', 'true');
+} else {
+  themeToggle?.setAttribute('aria-pressed', 'false');
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    themeTransitionOverlay?.classList.add('is-active');
+
+    window.setTimeout(() => {
+      const isLight = document.body.classList.toggle('light-theme');
+
+      themeToggle.setAttribute('aria-pressed', String(isLight));
+      localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+    }, 80);
+
+    window.setTimeout(() => {
+      themeTransitionOverlay?.classList.remove('is-active');
+    }, 220);
+  });
+}
 
 // ---- SCROLL REVEAL ----
 const revealEls = document.querySelectorAll('.reveal');
@@ -226,7 +228,7 @@ class ProjectCarousel {
 
       if (totalSlides > 1) {
         this.setupEventListeners(id);
-        this.startAutoPlay(id);
+        this.observeCarousel(id);
       }
     });
   }
@@ -343,6 +345,26 @@ class ProjectCarousel {
   resetAutoPlay(carouselId) {
     this.stopAutoPlay(carouselId);
     this.startAutoPlay(carouselId);
+  }
+
+  observeCarousel(carouselId) {
+    const carousel = this.carousels.get(carouselId);
+    if (!carousel) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.startAutoPlay(carouselId);
+        } else {
+          this.stopAutoPlay(carouselId);
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: '120px 0px'
+    });
+
+    observer.observe(carousel.element);
   }
 }
 
