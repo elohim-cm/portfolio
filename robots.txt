@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elohim-warren.vercel.app/sitemap.xml

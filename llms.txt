@@ -1,0 +1,46 @@
+# Elohim Warren
+
+> Portfolio professionnel d’Elohim Warren, développeur web full-stack basé à Douala, Cameroun.
+
+Elohim Warren conçoit des plateformes web sur mesure, marketplaces, applications métiers, sites vitrines et interfaces web performantes pour entrepreneurs, PME, startups et projets digitaux.
+
+## Informations principales
+
+- Nom : Elohim Warren
+- Métier : Développeur Web Full-Stack
+- Localisation : Douala, Cameroun
+- Zone de service : Cameroun, Afrique francophone, collaboration à distance
+- Technologies : PHP, MySQL, HTML, CSS, JavaScript, Vanilla JavaScript
+- Spécialités : plateformes web, marketplaces, applications métiers, architecture backend, SEO technique, performance web, sécurité web
+
+## Pages importantes
+
+- Accueil / Portfolio : https://elohim-warren.vercel.app/
+- Projets : https://elohim-warren.vercel.app/#portfolio
+- Services : https://elohim-warren.vercel.app/#services
+- Contact : https://elohim-warren.vercel.app/#contact
+
+## Profil court
+
+Elohim Warren est un développeur web full-stack basé à Douala, au Cameroun. Il aide les entrepreneurs, PME et porteurs de projets à créer des solutions web rapides, sécurisées, maintenables et adaptées aux besoins réels du terrain.
+
+## Compétences
+
+- Développement frontend HTML, CSS et JavaScript
+- Développement backend PHP
+- Conception de bases de données MySQL
+- Création de plateformes web sur mesure
+- Création de marketplaces
+- Création d’applications métiers
+- Optimisation SEO technique
+- Optimisation des performances web
+- Sécurité web
+- Architecture de projets web
+
+## Contact
+
+- Site : https://elohim-warren.vercel.app/
+- GitHub : https://github.com/elohim-cm/
+- Facebook : https://facebook.com/elohimwarren.cm
+- Telegram : https://t.me/elohim_cm
+- Whatsapp : https://wa.me/237658994705
