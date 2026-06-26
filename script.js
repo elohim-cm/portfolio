@@ -51,17 +51,29 @@ function updateActiveNav(scrollY) {
     }
   });
 }
-lenis.on('scroll', ({ scroll }) => {
-  updateScrollProgress(scroll);
-  updateActiveNav(scroll);
+
+lenis.on('scroll', () => {
+  if (document.body.classList.contains('modal-open')) {
+    lenis.stop(); // sécurité supplémentaire
+  }
 });
 
 // ---- MOBILE MENU ----
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  menuToggle.classList.toggle('is-open', isOpen);
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+});
+
 mobileMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuToggle.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  });
 });
 
 // ---- THEME TOGGLE ----
@@ -175,16 +187,46 @@ const modalOverlays = document.querySelectorAll('.project-modal-overlay');
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (!modal) return;
-  modal.classList.add('open');
+
+  lenis.stop();
   document.body.classList.add('modal-open');
-  lenis.stop(); // Stop scroll when modal is open
+
+  // On bloque le scroll uniquement via CSS (body.modal-open { overflow: hidden })
+  // PAS de style inline sur body/html — ça interfère avec le layout
+
+  modal.classList.add('open');
+
+  // Donne le focus au body de la modal pour que la molette y fonctionne
+  setTimeout(() => {
+    const modalBody = modal.querySelector('.project-modal-body');
+    if (modalBody) {
+      modalBody.setAttribute('tabindex', '-1');
+      modalBody.focus({ preventScroll: true });
+    }
+  }, 50);
 }
 
 function closeModal(modal) {
+  if (!modal) return;
+
   modal.classList.remove('open');
   document.body.classList.remove('modal-open');
-  lenis.start(); // Start scroll when modal is closed
+
+  setTimeout(() => {
+    lenis.start();
+  }, 250);
 }
+
+// Empêcher Lenis d'intercepter le scroll à l'intérieur des modales
+document.querySelectorAll('.project-modal-body').forEach(modalBody => {
+  modalBody.addEventListener('wheel', (e) => {
+    e.stopPropagation();
+  }, { passive: true });
+
+  modalBody.addEventListener('touchmove', (e) => {
+    e.stopPropagation();
+  }, { passive: true });
+});
 
 document.querySelectorAll('.project-details-btn').forEach(btn => {
   btn.addEventListener('click', () => {

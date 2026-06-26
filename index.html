@@ -212,7 +212,7 @@
 
   <!-- Navbar -->
   <header class="navbar" id="navbar">
-    <a href="#home" class="nav-logo">E<span class="nav-logo-highlight">lohim</span></a>
+    <a href="#home" class="nav-logo">Elo<span class="nav-logo-highlight">him</span></a>
     <nav class="nav-links">
       <a href="#home" class="nav-link active">Accueil</a>
       <a href="#about" class="nav-link">À propos</a>
@@ -225,13 +225,18 @@
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer le thème">
         <span class="theme-toggle-track">
           <span class="theme-toggle-thumb">
-            <span class="theme-icon theme-icon-moon">☾</span>
-            <span class="theme-icon theme-icon-sun">☀</span>
+            <span class="theme-icon theme-icon-moon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 1 0 9 9A9 9 0 1 1 12 3z"/></svg>
+            </span>
+            <span class="theme-icon theme-icon-sun">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </span>
           </span>
         </span>
       </button>
       <button class="nav-mobile-toggle" id="menuToggle" aria-label="Menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
   </header>
@@ -478,44 +483,65 @@
             <p class="project-desc">Plateforme WordPress sur-mesure conçue pour une entreprise de rénovation et d’investissement immobilier en Île-de-France. Architecture pensée pour la conversion : landing pages SEO, parcours utilisateur fluide et système sécurisé de collecte de leads connecté à la base de données.</p>
             <div class="project-actions">
               <a href="https://www.n-terre-renovation.fr" target="_blank" rel="noopener noreferrer" class="project-link">Voir le site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
-              <button class="project-details-btn" data-modal="modal-nterre" type="button">Voir détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+              <button class="project-details-btn" data-modal="modal-nterre" type="button">Voir les détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
             </div>
         </div>
       </div>
 
-        <!-- PROJET 1: N-TERRE -->
-        <!-- <div class="project-card reveal">
-          <div class="project-mockup">
-            <span class="project-mockup-placeholder">🏗️</span>
-            <div class="project-mockup-overlay"></div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags">
-              <span class="project-tag">WordPress Custom</span>
-              <span class="project-tag">PHP</span>
-              <span class="project-tag">MySQL</span>
-              <span class="project-tag">SEO Technique</span>
-            </div>
-            <h3 class="project-name">N-terre Rénovation</h3>
-            <div class="project-meta">
-              <span><span class="project-meta-label">URL:</span> <a href="https://www.n-terre-renovation.fr" target="_blank" rel="noopener noreferrer">n-terre-renovation.fr</a></span>
-              <span><span class="project-meta-label">Type:</span> Custom WordPress Theme</span>
-              <span><span class="project-meta-label">Année:</span> 2026</span>
-            </div>
-            <p class="project-desc">Plateforme WordPress sur-mesure conçue pour une entreprise de rénovation et d’investissement immobilier en Île-de-France. Architecture pensée pour la conversion : landing pages SEO, parcours utilisateur fluide et système sécurisé de collecte de leads connecté à la base de données.</p>
-            <div class="project-actions">
-              <a href="https://www.n-terre-renovation.fr" target="_blank" rel="noopener noreferrer" class="project-link">Voir le site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
-              <button class="project-details-btn" data-modal="modal-nterre" type="button">Voir détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
-            </div>
-          </div>
-        </div> -->
-
         <!-- PROJET 2: PALM BEACH -->
-        <!-- <div class="project-card reveal" style="transition-delay: 0.1s;">
-          <div class="project-mockup">
-            <span class="project-mockup-placeholder">🌴</span>
-            <div class="project-mockup-overlay"></div>
+        <div class="project-card reveal">
+          <div class="project-carousel" data-carousel="carousel-1" tabindex="0" role="region" aria-label="Galerie du projet Palm Beach Douala">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-slide active">
+                <img src="projects/palmbeach1-elohim-portfolio.png" alt="Palm Beach - Page d'accueil du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/palmbeach2-elohim-portfolio.png" alt="Palm Beach - Section ADN du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/palmbeach3-elohim-portfolio.png" alt="Palm Beach - Section galérie du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/palmbeach4-elohim-portfolio.png" alt="Palm Beach - Section carte du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/palmbeach5-elohim-portfolio.png" alt="Palm Beach - Section programmation du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/palmbeach6-elohim-portfolio.png" alt="Palm Beach - Section privatisation du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/palmbeach7-elohim-portfolio.png" alt="Palm Beach - Section informations pratiques (localisaiton, horaires, réseaux sociaux) du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/palmbeach8-elohim-portfolio.png" alt="Palm Beach - Page de mentions légales du site Palm Beach développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+            </div>
           </div>
+          <!-- Contrôles -->
+          <button class="carousel-nav carousel-prev" data-target="carousel-1" aria-label="Image précédente">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="carousel-nav carousel-next" data-target="carousel-1" aria-label="Image suivante">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <!-- Indicateurs -->
+          <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0"></button>
+            <button class="indicator" data-slide="1"></button>
+            <button class="indicator" data-slide="2"></button>
+            <button class="indicator" data-slide="3"></button>
+            <button class="indicator" data-slide="4"></button>
+            <button class="indicator" data-slide="5"></button>
+            <button class="indicator" data-slide="6"></button>
+            <button class="indicator" data-slide="7"></button>
+          </div>
+        </div>
           <div class="project-body">
             <div class="project-tags">
               <span class="project-tag">Static SPA</span>
@@ -532,17 +558,65 @@
             <p class="project-desc">SPA statique moderne pour bar-lounge haut de gamme à Douala. Construit sans frameworks pour maximiser performance et contrôle. UX sophistiquée : animations natives, scroll-triggered header, lightbox native (clavier + tactile), chargement dynamique du menu, optimisation seo avancée.</p>
             <div class="project-actions">
               <a href="https://palmbeach.cm" target="_blank" rel="noopener noreferrer" class="project-link">Voir le site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
-              <button class="project-details-btn" data-modal="modal-palmbeach" type="button">Voir détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+              <button class="project-details-btn" data-modal="modal-palmbeach" type="button">Voir les détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
             </div>
           </div>
-        </div> -->
+        </div>
 
         <!-- PROJET 3: NEAR-JOB -->
-        <!-- <div class="project-card reveal" style="transition-delay: 0.2s;">
-          <div class="project-mockup">
-            <span class="project-mockup-placeholder">🛠️</span>
-            <div class="project-mockup-overlay"></div>
+        <div class="project-card reveal">
+          <div class="project-carousel" data-carousel="carousel-1" tabindex="0" role="region" aria-label="Galerie du projet Near-Job">
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-slide active">
+                <img src="projects/nearjob1-elohim-portfolio.png" alt="Near-Job - Page d'accueil du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/nearjob2-elohim-portfolio.png" alt="Near-Job - Section services du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/nearjob3-elohim-portfolio.png" alt="Near-Job - Page Trouver-un-Job du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/nearjob4-elohim-portfolio.png" alt="Near-Job - Page à propos de nous (section Elohim) du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/nearjob5-elohim-portfolio.png" alt="Near-Job - Page de connexion du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/nearjob6-elohim-portfolio.png" alt="Near-Job - Page d'un exemplaire de profil en ligne du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/nearjob7-elohim-portfolio.png" alt="Near-Job - Dashboard côté prestataire du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+              <div class="carousel-slide">
+                <img src="projects/nearjob8-elohim-portfolio.png" alt="Near-Job - Page de tous les prestataires du site Near-Job développé par Elohim Warren" loading="lazy" decoding="async">
+              </div>
+            </div>
           </div>
+          <!-- Contrôles -->
+          <button class="carousel-nav carousel-prev" data-target="carousel-1" aria-label="Image précédente">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="carousel-nav carousel-next" data-target="carousel-1" aria-label="Image suivante">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <!-- Indicateurs -->
+          <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0"></button>
+            <button class="indicator" data-slide="1"></button>
+            <button class="indicator" data-slide="2"></button>
+            <button class="indicator" data-slide="3"></button>
+            <button class="indicator" data-slide="4"></button>
+            <button class="indicator" data-slide="5"></button>
+            <button class="indicator" data-slide="6"></button>
+            <button class="indicator" data-slide="7"></button>
+          </div>
+        </div>
           <div class="project-body">
             <div class="project-tags">
               <span class="project-tag">Marketplace</span>
@@ -554,21 +628,61 @@
             <div class="project-meta">
               <span><span class="project-meta-label">URL:</span> <a href="https://near-job.com" target="_blank" rel="noopener noreferrer">near-job.com</a></span>
               <span><span class="project-meta-label">Type:</span> Full-Stack Marketplace</span>
-              <span><span class="project-meta-label">Marché:</span> Canada (FR/EN)</span>
+              <span><span class="project-meta-label">Année:</span> 2026</span>
             </div>
             <p class="project-desc">Marketplace de services développée pour le marché canadien. Sécurité OWASP autonome, génération des pages SEO programmatiques, système de vérification multi-niveaux, backend sécurisé conçu pour évoluer à grande échelle.</p>
             <div class="project-actions">
               <a href="https://near-job.com" target="_blank" rel="noopener noreferrer" class="project-link">Voir le site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
-              <button class="project-details-btn" data-modal="modal-nearjob" type="button">Voir détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+              <button class="project-details-btn" data-modal="modal-nearjob" type="button">Voir les détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
             </div>
           </div>
-        </div> -->
+        </div> 
 
         <!-- PROJET 4: CLIM CHAUFFAGES -->
-        <!-- <div class="project-card reveal" style="transition-delay: 0.3s;">
-          <div class="project-mockup">
-            <span class="project-mockup-placeholder">❄️</span>
-            <div class="project-mockup-overlay"></div>
+        <div class="project-card reveal">
+          <div class="project-carousel" data-carousel="carousel-1" tabindex="0" role="region" aria-label="Galerie du projet CLIM CHAUFFAGES">
+            <div class="carousel-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide active">
+                  <img src="projects/climchauffages1-elohim-portfolio.png" alt="CLIM CHAUFFAGES - Page d'accueil du site Climchauffages développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/climchauffages2-elohim-portfolio.png" alt="CLIM CHAUFFAGES - Section zone d'intervention du site Climchauffages développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/climchauffages3-elohim-portfolio.png" alt="CLIM CHAUFFAGES - Section du FAQ (Foires Aux Questions) du site Climchauffages développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/climchauffages4-elohim-portfolio.png" alt="CLIM CHAUFFAGES - Page de demande de Dévis du site Climchauffages développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/climchauffages5-elohim-portfolio.png" alt="CLIM CHAUFFAGES - Page des réalisations du site Climchauffages développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/climchauffages6-elohim-portfolio.png" alt="CLIM CHAUFFAGES - Page d'un des articles du site Climchauffages développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+            <!-- Contrôles -->
+            <button class="carousel-nav carousel-prev" data-target="carousel-1" aria-label="Image précédente">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <button class="carousel-nav carousel-next" data-target="carousel-1" aria-label="Image suivante">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+            <!-- Indicateurs -->
+            <div class="carousel-indicators">
+              <button class="indicator active" data-slide="0"></button>
+              <button class="indicator" data-slide="1"></button>
+              <button class="indicator" data-slide="2"></button>
+              <button class="indicator" data-slide="3"></button>
+              <button class="indicator" data-slide="4"></button>
+              <button class="indicator" data-slide="5"></button>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-tags">
@@ -578,22 +692,67 @@
             </div>
             <h3 class="project-name">Clim Chauffages</h3>
             <div class="project-meta">
-              <span><span class="project-meta-label">Type:</span> HVAC Services Website</span>
+              <span><span class="project-meta-label">URL:</span> <a href="https://climchauffages.fr/" target="_blank" rel="noopener noreferrer">climchauffages.fr</a></span>
               <span><span class="project-meta-label">Client:</span> HVAC company (Île-de-France)</span>
               <span><span class="project-meta-label">Année:</span> 2026</span>
             </div>
             <p class="project-desc">Site de génération de leads pour entreprise HVAC en Île-de-France. Stack 100% vanilla, interface légère. UX orientée conversion : formulaire devis dynamiques multi-étapes avec validation en temps réel, CTA persistants, animations scroll fluides.</p>
             <div class="project-actions">
-              <button class="project-details-btn" data-modal="modal-clim" type="button">Voir détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+              <a href="https://climchauffages.fr/" target="_blank" rel="noopener noreferrer" class="project-link">Voir le site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+              <button class="project-details-btn" data-modal="modal-clim" type="button">Voir les détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
             </div>
           </div>
-        </div> -->
+        </div>
 
         <!-- PROJET 5: KMERSHOP -->
-        <!-- <div class="project-card reveal" style="transition-delay: 0.4s;">
-          <div class="project-mockup">
-            <span class="project-mockup-placeholder">🛒</span>
-            <div class="project-mockup-overlay"></div>
+        <div class="project-card reveal" style="transition-delay: 0.4s;">
+          <div class="project-carousel" data-carousel="carousel-1" tabindex="0" role="region" aria-label="Galerie du projet Kmershop">
+            <div class="carousel-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide active">
+                  <img src="projects/kmershop1-elohim-portfolio.png" alt="Kmershop - Page d'accueil du site Kmershop développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/kmershop2-elohim-portfolio.png" alt="Kmershop - Page des produits du site Kmershop développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/kmershop3-elohim-portfolio.png" alt="Kmershop - Page de connexion pour vendeur du site Kmershop développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/kmershop4-elohim-portfolio.png" alt="Kmershop - Dashboard admin du site Kmershop développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/kmershop5-elohim-portfolio.png" alt="Kmershop - Dashboard admin gestion des vendeurs du site Kmershop développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/kmershop6-elohim-portfolio.png" alt="Kmershop - Dashboard vendeur du site Kmershop développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+                <div class="carousel-slide">
+                  <img src="projects/kmershop7-elohim-portfolio.png" alt="Kmershop - Dashboard des produits présentés par un vendeur du site Kmershop développé par Elohim Warren" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+            <!-- Contrôles -->
+            <button class="carousel-nav carousel-prev" data-target="carousel-1" aria-label="Image précédente">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <button class="carousel-nav carousel-next" data-target="carousel-1" aria-label="Image suivante">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+            <!-- Indicateurs -->
+            <div class="carousel-indicators">
+              <button class="indicator active" data-slide="0"></button>
+              <button class="indicator" data-slide="1"></button>
+              <button class="indicator" data-slide="2"></button>
+              <button class="indicator" data-slide="3"></button>
+              <button class="indicator" data-slide="4"></button>
+              <button class="indicator" data-slide="5"></button>
+              <button class="indicator" data-slide="6"></button>
+            </div>
           </div>
           <div class="project-body">
             <div class="project-tags">
@@ -606,14 +765,14 @@
             <div class="project-meta">
               <span><span class="project-meta-label">Type:</span> E-commerce Marketplace</span>
               <span><span class="project-meta-label">Marché:</span> Cameroun</span>
-              <span><span class="project-meta-label">Année:</span> Janvier 2026</span>
+              <span><span class="project-meta-label">Année:</span> Janvier 2025</span>
             </div>
             <p class="project-desc">Marketplace e-commerce complète pensée pour le marché camerounais. Architecture MVC-lite sans framework, système complet de gestion vendeurs/admins/clients avec workflow de validation (onboarding → validation admin → publication),intégration des paiement Mobile Money.</p>
             <div class="project-actions">
-              <button class="project-details-btn" data-modal="modal-kmershop" type="button">Voir détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+              <button class="project-details-btn" data-modal="modal-kmershop" type="button">Voir les détails <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
             </div>
           </div>
-        </div> -->
+        </div>
 
       </div>
     </section>
